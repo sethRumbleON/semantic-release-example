@@ -42,6 +42,14 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       - run: yarn test
+  release:
+    docker:
+      - image: circleci/node:lts
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run: yarn run semantic-release
 workflows:
   version: 2
   build_and_test:
@@ -50,3 +58,17 @@ workflows:
       - test:
           requires:
             - build
+      - release:
+          requires:
+            - build
+            - test
+          filters:
+            branches:
+              only:
+                - master
+      - deploy:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/

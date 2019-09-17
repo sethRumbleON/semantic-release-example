@@ -4,17 +4,37 @@
   "description": "An example project to showcase sematic release functionality ",
   "scripts": {
     "dev:commit": "git-cz",
+    "semantic-release": "semantic-release",
     "test": "jest"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "3.0.4",
+    "@semantic-release/git": "7.0.16",
     "commitizen": "4.0.3",
     "cz-conventional-changelog": "3.0.2",
-    "jest": "24.9.0"
+    "jest": "24.9.0",
+    "semantic-release": "15.13.24"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      {
+        "path": "@semantic-release/git",
+        "assets": [
+          "package.json",
+          "package-lock.json",
+          "CHANGELOG.md"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]nn${nextRelease.notes}"
+      }
+    ]
   },
   "main": "index.js",
   "repository": "https://github.com/sethRumbleON/semantic-release-example.git",
