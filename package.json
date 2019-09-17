@@ -1,0 +1,22 @@
+{
+  "name": "semantic-release-example",
+  "version": "0.0.1",
+  "description": "An example project to showcase sematic release functionality ",
+  "scripts": {
+    "dev:commit": "git-cz"
+  },
+  "devDependencies": {
+    "commitizen": "4.0.3",
+    "cz-conventional-changelog": "3.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/sethRumbleON/semantic-release-example.git",
+  "author": "Seth McGuinness <seth@rumbleon.com>",
+  "license": "MIT",
+  "private": true
+}
