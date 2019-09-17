@@ -50,6 +50,11 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run: yarn run semantic-release
+  deploy:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - run: echo "Deployed $CIRCLE_TAG"
 workflows:
   version: 2
   build_and_test:
