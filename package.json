@@ -3,11 +3,13 @@
   "version": "0.0.1",
   "description": "An example project to showcase sematic release functionality ",
   "scripts": {
-    "dev:commit": "git-cz"
+    "dev:commit": "git-cz",
+    "test": "jest"
   },
   "devDependencies": {
     "commitizen": "4.0.3",
-    "cz-conventional-changelog": "3.0.2"
+    "cz-conventional-changelog": "3.0.2",
+    "jest": "24.9.0"
   },
   "config": {
     "commitizen": {
