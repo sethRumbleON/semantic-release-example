@@ -1,11 +1,33 @@
 {
   "name": "semantic-release-example",
   "version": "1.2.2",
-  "description": "An example project to showcase sematic release functionality",
+  "private": true,
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.2"
+  },
   "scripts": {
-    "dev:commit": "git-cz",
-    "semantic-release": "semantic-release",
-    "test": "jest"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "semantic-release": "semantic-release"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
     "@commitlint/cli": "8.2.0",
@@ -53,13 +75,8 @@
           {
             "path": "index.html"
           }
-        ]
+        ] 
       }
     ]
-  },
-  "main": "index.js",
-  "repository": "https://github.com/sethRumbleON/semantic-release-example.git",
-  "author": "Seth McGuinness <seth@rumbleon.com>",
-  "license": "MIT",
-  "private": true
+  }
 }
