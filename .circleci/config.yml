@@ -18,7 +18,9 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: yarn install
+      - run:
+          name: Install Dependencies
+          command: yarn install
 
       - save_cache:
           paths:
@@ -41,7 +43,9 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-      - run: yarn test
+      - run:
+          name: Run Tests
+          command: yarn test
   release:
     docker:
       - image: circleci/node:lts
@@ -49,15 +53,19 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - run: yarn run semantic-release
+      - run:
+          name: Run semantic-release
+          command: yarn run semantic-release
   deploy:
     docker:
       - image: circleci/node:lts
     steps:
-      - run: echo "Deployed $CIRCLE_TAG"
+      - run:
+          name: Deploy Tagged Version
+          command: echo "Deployed $CIRCLE_TAG"
 workflows:
   version: 2
-  build_and_test:
+  build-test-deploy:
     jobs:
       - build
       - test:
