@@ -1,6 +1,6 @@
 {
   "name": "semantic-release-example",
-  "version": "0.0.1",
+  "version": "1.2.0",
   "description": "An example project to showcase sematic release functionality",
   "scripts": {
     "dev:commit": "git-cz",
@@ -11,11 +11,13 @@
     "@commitlint/cli": "8.2.0",
     "@commitlint/config-conventional": "8.2.0",
     "@semantic-release/changelog": "3.0.4",
+    "@semantic-release/exec": "3.3.6",
     "@semantic-release/git": "7.0.16",
     "commitizen": "4.0.3",
     "cz-conventional-changelog": "3.0.2",
     "husky": "3.0.5",
     "jest": "24.9.0",
+    "json": "9.0.6",
     "semantic-release": "15.13.24"
   },
   "husky": {
@@ -35,19 +37,26 @@
     ]
   },
   "release": {
+    "branch": "refactor-husky-hooks",
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
-      "@semantic-release/github",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "json -I -f package.json -e 'this.version=\"${nextRelease.version}\"'"
+        }
+      ],
       {
         "path": "@semantic-release/git",
         "assets": [
           "package.json",
-          "package-lock.json",
           "CHANGELOG.md"
         ],
-        "message": "chore(release): ${nextRelease.version} [skip ci]nn${nextRelease.notes}"
-      }
+        "message": "chore(release): ${nextRelease.version} [skip ci]"
+      },
+      "@semantic-release/github"
     ]
   },
   "main": "index.js",
