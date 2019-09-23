@@ -2,6 +2,8 @@
   "name": "semantic-release-example",
   "version": "1.2.2",
   "private": true,
+  "repository": "https://github.com/sethRumbleON/semantic-release-example.git",
+  "author": "Seth McGuinness <seth@rumbleon.com>",
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
