@@ -42,19 +42,11 @@
       "@semantic-release/release-notes-generator",
       "@semantic-release/changelog",
       [
-        "@semantic-release/exec",
+        "@semantic-release/npm",
         {
-          "prepareCmd": "json -I -f package.json -e 'this.version=\"${nextRelease.version}\"'"
+          "npmPublish": false
         }
       ],
-      {
-        "path": "@semantic-release/git",
-        "assets": [
-          "package.json",
-          "CHANGELOG.md"
-        ],
-        "message": "chore(release): ${nextRelease.version} [skip ci]"
-      },
       {
         "path": "@semantic-release/github",
         "assets": [
