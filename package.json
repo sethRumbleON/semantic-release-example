@@ -69,14 +69,7 @@
           "npmPublish": false
         }
       ],
-      {
-        "path": "@semantic-release/github",
-        "assets": [
-          {
-            "path": "index.html"
-          }
-        ] 
-      }
+      "@semantic-release/github"
     ]
   }
 }
