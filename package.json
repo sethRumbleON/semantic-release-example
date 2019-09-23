@@ -1,6 +1,6 @@
 {
   "name": "semantic-release-example",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "An example project to showcase sematic release functionality",
   "scripts": {
     "dev:commit": "git-cz",
