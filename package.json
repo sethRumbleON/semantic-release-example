@@ -1,6 +1,6 @@
 {
   "name": "semantic-release-example",
-  "version": "0.0.1",
+  "version": "1.2.0",
   "description": "An example project to showcase sematic release functionality",
   "scripts": {
     "dev:commit": "git-cz",
@@ -37,6 +37,7 @@
     ]
   },
   "release": {
+    "branch": "refactor-husky-hooks",
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
@@ -44,7 +45,7 @@
       [
         "@semantic-release/exec",
         {
-          "prepareCmd": "json -I -f config.json -e 'this.version=${nextRelease.version}'"
+          "prepareCmd": "json -I -f package.json -e 'this.version=\"${nextRelease.version}\"'"
         }
       ],
       {
@@ -53,7 +54,7 @@
           "package.json",
           "CHANGELOG.md"
         ],
-        "message": "chore(release): ${nextRelease.version} [skip ci]nn${nextRelease.notes}"
+        "message": "chore(release): ${nextRelease.version} [skip ci]"
       },
       "@semantic-release/github"
     ]
